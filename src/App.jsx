@@ -31,10 +31,8 @@ function App() {
           <>
           <Header/>
           <IntroSection/>
-          <CostumersSection/>
-          
-          <MetricCard/>
-          <Card/>
+          <CostumersSection/>          
+         
           <Footer/>
 
           </>
