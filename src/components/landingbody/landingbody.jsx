@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 export default function LandingBody() {
   return (
-    <main className="min-h-screen bg-neutral-50 text-neutral-900 antialiased selection:bg-neutral-900 selection:text-white">
+    <main className="min-h-screen bg-white text-neutral-900 antialiased selection:bg-neutral-900 selection:text-white">
       {/* Decorative gradient blobs */}
       <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
         <div className="absolute -top-40 right-0 h-96 w-96 translate-x-1/3 rounded-full bg-gradient-to-br from-indigo-200 to-fuchsia-200 blur-3xl opacity-60" />
@@ -55,19 +55,8 @@ export default function LandingBody() {
         </div>
       </section>
 
-      {/* Trusted by */}
-      <section aria-labelledby="trusted" className="py-10 sm:py-12">
-        <h2 id="trusted" className="sr-only">Trusted by</h2>
-        <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 gap-x-8 gap-y-6 opacity-70 sm:grid-cols-4">
-            {["Bolivisión","Great Place To Work","Rural Homes Colorado","Natural History Museum LA"].map((n) => (
-              <div key={n} className="flex items-center justify-center">
-                <div className="h-6 w-40 rounded bg-neutral-900/5 text-center text-[10px] tracking-widest uppercase leading-6 text-neutral-500">{n}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+    
+     
 
       {/* Feature strip */}
       <section id="features" className="border-y border-black/5 bg-white/70 backdrop-blur py-16 sm:py-20">

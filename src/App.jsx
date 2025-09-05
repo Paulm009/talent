@@ -10,7 +10,7 @@ import Card from './components/custommers/Card'
 import { CostumersSection } from './components/custommers/CostumersSection'
 import { IntroSection } from './components/custommers/IntroSection'
 import MetricCard from './components/custommers/MetricCard'
-
+import Prueba from './components/vistaprueba/prueba' // Import con mayúscula
 
 function App() {
   const [count, setCount] = useState(0)
@@ -27,16 +27,23 @@ function App() {
           </>
         }>
         </Route>
+
         <Route path='/customers' element={
           <>
           <Header/>
           <IntroSection/>
           <CostumersSection/>          
-         
           <Footer/>
-
           </>
-        }></Route>
+        }>
+        </Route>
+
+        <Route path='/prueba' element={
+          <>
+          <Prueba/> 
+          </>
+        }>
+        </Route>
       </Routes>
     </BrowserRouter>
   )
