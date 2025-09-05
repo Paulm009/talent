@@ -12,7 +12,10 @@ function Header() {
             </a>
             <nav className="hidden md:flex items-center gap-8 text-sm">
               <a className="hover:opacity-70 transition-opacity" href="#features">Features</a>
-              <a className="hover:opacity-70 transition-opacity" href="#testimonials">Customers</a>
+              <Link to="/customers">
+              Customers
+              {/* <a className="hover:opacity-70 transition-opacity" href="#testimonials">Customers</a> */}
+              </Link>
               <a className="hover:opacity-70 transition-opacity" href="#pricing">Pricing</a>
             </nav>
             <div className="flex items-center gap-3">
