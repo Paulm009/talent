@@ -1,100 +1,158 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Card from "./Card";
-import { BiChevronRightCircle, BiChevronLeftCircle } from "react-icons/bi";
+import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import { carrucelcustommers, hiringManagers } from "../../assets/carrucelcustommers";
 
 const Carousel = ({ data, sectionTitle }) => {
-  const [current, setCurrent] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const carouselRef = useRef(null);
   const total = data.length;
 
-  const prevCard = () => {
-    if (total === 0) return;
-    setIsAnimating(true);
-    setTimeout(() => {
-      setCurrent((prev) => (prev === 0 ? total - 1 : prev - 1));
-      setIsAnimating(false);
-    }, 300);
+  // Número de cards visibles a la vez (responsive)
+  const getVisibleCards = () => {
+    if (typeof window !== 'undefined') {
+      if (window.innerWidth < 768) return 1;
+      if (window.innerWidth < 1024) return 2;
+      return 2;
+    }
+    return 3;
   };
 
-  const nextCard = () => {
-    if (total === 0) return;
-    setIsAnimating(true);
-    setTimeout(() => {
-      setCurrent((prev) => (prev === total - 1 ? 0 : prev + 1));
-      setIsAnimating(false);
-    }, 300);
-  };
+  const [visibleCards, setVisibleCards] = useState(getVisibleCards());
 
   useEffect(() => {
-    if (total === 0) return;
+    const handleResize = () => {
+      setVisibleCards(getVisibleCards());
+      // Ajustar currentIndex si es necesario después del resize
+      if (currentIndex + visibleCards > total) {
+        setCurrentIndex(Math.max(0, total - visibleCards));
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [currentIndex, visibleCards, total]);
+
+  const nextSlide = () => {
+    if (currentIndex + visibleCards >= total) {
+      setCurrentIndex(0);
+    } else {
+      setCurrentIndex(prev => prev + 1);
+    }
+  };
+
+  const prevSlide = () => {
+    if (currentIndex === 0) {
+      setCurrentIndex(total - visibleCards);
+    } else {
+      setCurrentIndex(prev => prev - 1);
+    }
+  };
+
+  // Movimiento automático cada 5 segundos
+  useEffect(() => {
     const interval = setInterval(() => {
-      setIsAnimating(true);
-      setTimeout(() => {
-        setCurrent((prev) => (prev === total - 1 ? 0 : prev + 1));
-        setIsAnimating(false);
-      }, 300);
+      nextSlide();
     }, 5000);
+    
     return () => clearInterval(interval);
-  }, [total]);
+  }, [currentIndex, visibleCards]);
 
   if (total === 0) {
-    return <p className="text-gray-400 text-center">No hay datos para mostrar.</p>;
+    return <p className="text-black-400 text-center">No hay datos para mostrar.</p>;
   }
 
   return (
-    <div className="mt-12 flex flex-col items-center">
-      <h1 className="text-2xl font-semibold text-center mb-6 text-purple-700">
-        {sectionTitle || data[current].title}
-      </h1>
-
-      <div className="flex items-center justify-center gap-6">
-        <button
-          onClick={prevCard}
-          className="text-purple-400 hover:text-purple-600 transition-colors"
-        >
-          <BiChevronLeftCircle size={40} />
-        </button>
-
-        <div
-          className={`transition-all duration-500 ${
-            isAnimating ? "opacity-0 scale-95" : "opacity-100 scale-100"
-          }`}
-        >
-          <Card
-            img_path={data[current].img}
-            description={data[current].description}
-          />
+    <div className="w-full bg-neutral-50 py-16 px-4">
+      <div className="max-w-7xl mx-auto">
+        {/* Encabezado */}
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
+            {sectionTitle}
+          </h2>
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            We review hundreds of unstructured résumés without overlooking great talent. Diversity and equality are properly considered.
+          </p>
         </div>
 
-        <button
-          onClick={nextCard}
-          className="text-purple-400 hover:text-purple-600 transition-colors"
-        >
-          <BiChevronRightCircle size={40} />
-        </button>
-      </div>
+        {/* Contenedor del carrusel */}
+        <div className="relative">
+          {/* Botones de navegación */}
+          <button 
+            onClick={prevSlide}
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 z-20 bg-white p-3 rounded-full hover:bg-gray-100 transition-all duration-300 -ml-4 md:-ml-6 shadow-lg border border-gray-200"
+            aria-label="Anterior"
+          >
+            <BiChevronLeft size={32} className="text-gray-700" />
+          </button>
+          
+          <button 
+            onClick={nextSlide}
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 z-20 bg-white p-3 rounded-full hover:bg-gray-100 transition-all duration-300 -mr-4 md:-mr-6 shadow-lg border border-gray-200"
+            aria-label="Siguiente"
+          >
+            <BiChevronRight size={32} className="text-gray-700" />
+          </button>
 
-      <div className="text-center mt-6 flex justify-center gap-3">
-        {data.map((_, idx) => (
-          <span
-            key={idx}
-            className={`inline-block w-3 h-3 rounded-full transition-all duration-300 ${
-              idx === current ? "bg-purple-400" : "bg-purple-200"
-            }`}
-          ></span>
-        ))}
+          {/* Carrusel */}
+          <div 
+            ref={carouselRef}
+            className="overflow-hidden px-2"
+          >
+            <div 
+              className="flex transition-transform duration-700 ease-out gap-6"
+              style={{ transform: `translateX(-${currentIndex * (100 / visibleCards)}%)` }}
+            >
+              {data.map((card, index) => (
+                <div 
+                  key={index}
+                  className="flex-shrink-0 transition-transform duration-300"
+                  style={{ width: `calc(${100 / visibleCards}% - 16px)` }}
+                >
+                  <Card card={card} />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Indicadores de posición */}
+        <div className="flex justify-center mt-10 space-x-3">
+          {Array.from({ length: Math.ceil(total / visibleCards) }).map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentIndex(index * visibleCards)}
+              className={`w-4 h-4 rounded-full transition-all duration-300 ${
+                Math.floor(currentIndex / visibleCards) === index 
+                  ? 'bg-purple-600 scale-125' 
+                  : 'bg-gray-300 hover:bg-gray-400'
+              }`}
+              aria-label={`Ir a la diapositiva ${index + 1}`}
+            />
+          ))}
+        </div>
+
+        {/* Texto inferior */}
+        <div className="text-center mt-16">
+          <p className="text-xl mb-8 max-w-2xl mx-auto text-gray-600">
+            Consulting clients expect both experience and technical skill. Talent Scout surfaces the candidates who have both—fast.
+          </p>
+          <button className="bg-purple-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-purple-700 transition-all duration-300 shadow-md">
+            Book a demo
+          </button>
+        </div>
       </div>
     </div>
   );
 };
 
-
 export const CostumersSection = () => {
   return (
-    <div>
+    <div className="space-y-20">
       <Carousel data={carrucelcustommers} sectionTitle="HR Professionals" />
       <Carousel data={hiringManagers} sectionTitle="Hiring Managers" />
     </div>
   );
 };
+
+export default Carousel;
