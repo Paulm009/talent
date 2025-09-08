@@ -1,6 +1,7 @@
 import React from "react"
 
-
+import hrLeadImg from "../../assets/Bolivisión2025.png"
+import hiringManagerImg  from "../../assets/RH.png"
 
 import { Link } from "react-router-dom";
 
@@ -19,15 +20,12 @@ export default function LandingBody() {
       <section className="relative">
         <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8 py-20 sm:py-24">
           <div className="mx-auto max-w-3xl text-center">
-            <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-3 py-1 text-xs font-medium text-neutral-600 shadow-sm backdrop-blur">
-              HR AI • Screening & Assessments
-            </p>
+            
             <h1 className="text-4xl/tight sm:text-5xl/tight md:text-6xl/tight font-semibold tracking-tight">
-              Find the right hire <span className="text-neutral-400">—</span> faster, bias-free.
+              Powerful AI for Smart Hiring, Faster <span className="text-neutral-400"></span> 
             </h1>
             <p className="mt-5 text-base sm:text-lg text-neutral-600">
-              Screen and evaluate candidates in seconds based on skills, requirements, and psychographic assessments. 
-              A minimal workflow that turns hours of filtering into minutes.
+             Find the right talent with data driven screening and assessment
             </p>
 
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -56,28 +54,45 @@ export default function LandingBody() {
       </section>
 
     
-     
+      <h1 className="text-xl/tight sm:text-2xl/tight md:text-4xl/tight font-semibold tracking-tight">
+  Intuitive, user-configurable AI-powered candidate evaluation tool that quickly y easily helps you find the right candidate fit. 
+  <span className="text-neutral-400"></span>
+</h1>
+<br />
+<h1 className="text-xl/tight sm:text-1xl/tight md:text-2xl/tight  tracking-tight">
+  No Costly Licensing. No Configuration. Just Results! 
+  <span className="text-neutral-400"></span>
+</h1>
 
       {/* Feature strip */}
       <section id="features" className="border-y border-black/5 bg-white/70 backdrop-blur py-16 sm:py-20">
         <div className="mx-auto max-w-6xl px-5 sm:px-6">
           <div className="grid gap-10 sm:grid-cols-3">
-            <FeatureCard title="Structured shortlists" description="From hundreds of résumés to a ranked list with evidence you can audit." icon={<ListIcon />} />
-            <FeatureCard title="Psychographic insights" description="Objective assessments illuminate culture add and role fit — not just keywords." icon={<BrainIcon />} />
-            <FeatureCard title="Compliance & traceability" description="Every decision is logged, transparent, and ready for review." icon={<CheckIcon />} />
+            <FeatureCard title="Dynamic Screening" description="Auto-match resumes with ideal candidate profiles. Adjust requirements on the fly and fine-tune evaluation criteria in just a few clicks" icon={<ListIcon />} />
+            <FeatureCard title="In-Depth Assessment" description="Six-dimensional psychographic model to analyze and score candidates, providing clear insights into overall candidate fit." icon={<BrainIcon />} />
+            <FeatureCard title="Centralized Dashboard" description="Instantly see your top-ranked candidates, their scores, detailed evaluation data, and supporting evidence" icon={<CheckIcon />} />
           </div>
         </div>
       </section>
 
       {/* Testimonials */}
       <section id="testimonials" className="py-16 sm:py-24">
-        <div className="mx-auto max-w-6xl px-5 sm:px-6">
-          <div className="grid gap-8 sm:grid-cols-2">
-            <QuoteCard quote="We review hundreds of unstructured résumés without overlooking great talent. Diversity and equality are properly considered." author="HR Lead, Bolivisión" />
-            <QuoteCard quote="Consulting clients expect both experience and technical skill. Talent Scout surfaces the candidates who have both — fast." author="Hiring Manager, LA" />
-          </div>
+      <div className="mx-auto max-w-6xl px-5 sm:px-6">
+        <div className="grid gap-8 sm:grid-cols-2">
+          <QuoteCard
+            image={hrLeadImg}
+            quote="We review hundreds of unstructured résumés without overlooking great talent. Diversity and equality are properly considered."
+            author="HR Lead, Bolivisión"
+          />
+          <QuoteCard
+            image={hiringManagerImg}
+            quote="Consulting clients expect both experience and technical skill. Talent Scout surfaces the candidates who have both — fast."
+            author="Hiring Manager, LA"
+          />
         </div>
-      </section>
+      </div>
+    </section>
+
 
       {/* CTA */}
       <section id="pricing" className="py-16">
@@ -117,9 +132,16 @@ function FeatureCard({ title, description, icon }) {
   )
 }
 
-function QuoteCard({ quote, author }) {
+function QuoteCard({ image, quote, author }) {
   return (
-    <figure className="rounded-3xl border border-black/5 bg-white/70 p-6 backdrop-blur">
+    <figure className="rounded-3xl border border-black/5 bg-white/70 p-6 backdrop-blur flex flex-col items-center text-center">
+      {image && (
+        <img
+          src={image}
+          alt={author}
+          className="w-16 h-16 rounded-full object-cover mb-4"
+        />
+      )}
       <blockquote className="text-neutral-900 text-lg">“{quote}”</blockquote>
       <figcaption className="mt-4 text-sm text-neutral-600">{author}</figcaption>
     </figure>

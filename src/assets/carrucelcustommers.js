@@ -21,5 +21,9 @@ export const carrucelcustommers = [
   {
       img: "https://images.squarespace-cdn.com/content/v1/61c1f491e2c5cd5d6d687d24/2366a9b0-2d50-420a-9d12-af9df7ddd647/RH_Primary_CMYK.png",
       description: "Talent Scout's AI resume screening tool made it incredibly easy for us to upload job descriptions and resumes, providing clear assessment and matching scores. We were extremely impressed with the data-driven insights, which streamlined our hiring process. The outcome was fantastic, as the tool directly led us to make some of our best hires to date."
-  }
+  },
+  {
+    img: "https://images.squarespace-cdn.com/content/v1/61c1f491e2c5cd5d6d687d24/2366a9b0-2d50-420a-9d12-af9df7ddd647/RH_Primary_CMYK.png",
+    description: "Talent Scout's AI resume screening tool made it incredibly easy for us to upload job descriptions and resumes, providing clear assessment and matching scores. We were extremely impressed with the data-driven insights, which streamlined our hiring process. The outcome was fantastic, as the tool directly led us to make some of our best hires to date."
+}
   ];

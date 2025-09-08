@@ -91,7 +91,7 @@ const Carousel = ({ data, sectionTitle }) => {
             className="absolute right-0 top-1/2 transform -translate-y-1/2 z-20 bg-white p-3 rounded-full hover:bg-gray-100 transition-all duration-300 -mr-4 md:-mr-6 shadow-lg border border-gray-200"
             aria-label="Siguiente"
           >
-            <BiChevronRight size={32} className="text-gray-700" />
+            <BiChevronRight size={32} className="text-blue-700" />
           </button>
 
           {/* Carrusel */}
