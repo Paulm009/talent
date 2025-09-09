@@ -71,39 +71,29 @@ export default function LandingBody() {
 <br /> <br />
   <div className="mx-auto max-w-6xl px-5 sm:px-6">
     <div className="grid gap-10 sm:grid-cols-3">
-      <FeatureCard title="Dynamic Screening" description="Auto-match resumes with ideal candidate profiles. Adjust requirements on the fly and fine-tune evaluation criteria in just a few clicks" icon={<ListIcon />} />
-      <FeatureCard title="In-Depth Assessment" description="Six-dimensional psychographic model to analyze and score candidates, providing clear insights into overall candidate fit." icon={<BrainIcon />} />
-      <FeatureCard title="Centralized Dashboard" description="Instantly see your top-ranked candidates, their scores, detailed evaluation data, and supporting evidence" icon={<CheckIcon />} />
+      <FeatureCard title="Dynamic Screening" description="Auto-match resumes with ideal candidate profiles. Adjust requirements on the fly and fine-tune evaluation criteria in just a few clicks" icon={<FilterIcon />} />
+      <FeatureCard title="In-Depth Assessment" description="Six-dimensional psychographic model to analyze and score candidates, providing clear insights into overall candidate fit." icon={<AnalyticsIcon />} />
+      <FeatureCard title="Centralized Dashboard" description="Instantly see your top-ranked candidates, their scores, detailed evaluation data, and supporting evidence" icon={<DashboardIcon />} />
     </div>
   </div>
 </section>
 
 
-<section id="testimonials" className="pt-16 sm:pt-24">
+<section id="testimonials" className="pt-16 sm:pt-24 py-0 px-0">
   <div className="mx-auto max-w-6xl px-5 sm:px-6">
     <IntroSection />
   </div>
 </section>
 
 {/* Testimonials */}
-<section id="testimonials" className="pt-16 sm:pt-24">
+<section id="testimonials" className="pt-16 sm:pt-24 py-0 px-0">
   <div className="mx-auto max-w-6xl px-5 sm:px-6">
     <CostumersSection />
   </div>
 </section>
 
 
-      {/* CTA */}
-      <section id="pricing" className="py-16">
-        <div className="mx-auto max-w-3xl px-5 sm:px-6 text-center">
-          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight">Only pay per role processed.</h2>
-          <p className="mt-3 text-neutral-600">Support included. Scale recruiting throughput without scaling headcount.</p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <a href="#cta" className="inline-flex items-center rounded-full bg-black px-6 py-3 text-sm font-medium text-white hover:bg-neutral-800">Get Started</a>
-            <a href="#contact" className="inline-flex items-center rounded-full border border-neutral-300 bg-white px-6 py-3 text-sm font-medium text-neutral-900 hover:bg-neutral-50">Talk to sales</a>
-          </div>
-        </div>
-      </section>
+     
     </main>
   )
 }
@@ -173,27 +163,32 @@ function ShieldIcon() {
     </svg>
   )
 }
-function ListIcon() {
+function FilterIcon() {
   return (
     <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2">
-      <path d="M8 6h12M8 12h12M8 18h12" />
-      <circle cx="4" cy="6" r="1.5" />
-      <circle cx="4" cy="12" r="1.5" />
-      <circle cx="4" cy="18" r="1.5" />
+      <path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z" />
     </svg>
   )
 }
-function BrainIcon() {
+
+function AnalyticsIcon() {
   return (
     <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2">
-      <path d="M8 7a3 3 0 1 1 3-3m5 3a3 3 0 1 0-3-3M8 7a5 5 0 0 0-4 5v1a4 4 0 0 0 4 4m8-10a5 5 0 0 1 4 5v1a4 4 0 0 1-4 4M8 17a3 3 0 1 0 3 3m5-3a3 3 0 1 1-3 3" />
+      <path d="M3 3v18h18" />
+      <path d="M18 17V9" />
+      <path d="M13 17V5" />
+      <path d="M8 17v-3" />
     </svg>
   )
 }
-function CheckIcon() {
+function DashboardIcon() {
   return (
     <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2">
-      <path d="m4 12 4 4 12-12" />
+      <path d="M3 3v18h18" />
+      <path d="M3 9h18" />
+      <path d="M3 15h18" />
+      <path d="M9 3v18" />
+      <path d="M15 3v18" />
     </svg>
   )
 }

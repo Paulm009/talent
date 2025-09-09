@@ -57,17 +57,20 @@ const Card = ({ card }) => {
       }}>
         <div style={{flex: 1, overflow: 'hidden'}}>
           <p style={{
-            fontSize: isMobile ? '0.875rem' : '1.rem',
-            color: '#374151',
-            lineHeight: '1.5',
-            display: '-webkit-box',
-            WebkitLineClamp: isMobile ? 5 : 'none',
-            WebkitBoxOrient: 'vertical',
-            overflow: 'hidden',
-            margin: 0
-          }}>
-            "{card.description}"
-          </p>
+  fontSize: isMobile ? '0.875rem' : '1.125rem',
+  color: '#374151',
+  lineHeight: '1.25',
+  display: '-webkit-box',
+  WebkitLineClamp: isMobile ? 5 : 'none',
+  WebkitBoxOrient: 'vertical',
+  overflow: 'hidden',
+  margin: 0,
+  fontFamily: '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif',
+  fontWeight: '400',
+  letterSpacing: '-0.025em'
+}}>
+  "{card.description}"
+</p>
         </div>
         
         
