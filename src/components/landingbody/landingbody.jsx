@@ -2,7 +2,8 @@ import React from "react"
 
 import hrLeadImg from "../../assets/Bolivisión2025.png"
 import hiringManagerImg  from "../../assets/RH.png"
-
+import {CostumersSection} from "../custommers/CostumersSection"
+import {IntroSection} from "../custommers/IntroSection"
 import { Link } from "react-router-dom";
 
 
@@ -54,7 +55,11 @@ export default function LandingBody() {
       </section>
 
     
-      <h1 className="text-xl/tight sm:text-2xl/tight md:text-4xl/tight font-semibold tracking-tight">
+     
+
+      {/* Feature strip */}
+      <section id="features" className="border-y border-black/5 bg-white/70 backdrop-blur py-10 sm:py-12">
+       <h1 className="text-xl/tight sm:text-2xl/tight md:text-4xl/tight font-semibold tracking-tight">
   Intuitive, user-configurable AI-powered candidate evaluation tool that quickly y easily helps you find the right candidate fit. 
   <span className="text-neutral-400"></span>
 </h1>
@@ -63,35 +68,29 @@ export default function LandingBody() {
   No Costly Licensing. No Configuration. Just Results! 
   <span className="text-neutral-400"></span>
 </h1>
+<br /> <br />
+  <div className="mx-auto max-w-6xl px-5 sm:px-6">
+    <div className="grid gap-10 sm:grid-cols-3">
+      <FeatureCard title="Dynamic Screening" description="Auto-match resumes with ideal candidate profiles. Adjust requirements on the fly and fine-tune evaluation criteria in just a few clicks" icon={<ListIcon />} />
+      <FeatureCard title="In-Depth Assessment" description="Six-dimensional psychographic model to analyze and score candidates, providing clear insights into overall candidate fit." icon={<BrainIcon />} />
+      <FeatureCard title="Centralized Dashboard" description="Instantly see your top-ranked candidates, their scores, detailed evaluation data, and supporting evidence" icon={<CheckIcon />} />
+    </div>
+  </div>
+</section>
 
-      {/* Feature strip */}
-      <section id="features" className="border-y border-black/5 bg-white/70 backdrop-blur py-16 sm:py-20">
-        <div className="mx-auto max-w-6xl px-5 sm:px-6">
-          <div className="grid gap-10 sm:grid-cols-3">
-            <FeatureCard title="Dynamic Screening" description="Auto-match resumes with ideal candidate profiles. Adjust requirements on the fly and fine-tune evaluation criteria in just a few clicks" icon={<ListIcon />} />
-            <FeatureCard title="In-Depth Assessment" description="Six-dimensional psychographic model to analyze and score candidates, providing clear insights into overall candidate fit." icon={<BrainIcon />} />
-            <FeatureCard title="Centralized Dashboard" description="Instantly see your top-ranked candidates, their scores, detailed evaluation data, and supporting evidence" icon={<CheckIcon />} />
-          </div>
-        </div>
-      </section>
 
-      {/* Testimonials */}
-      <section id="testimonials" className="py-16 sm:py-24">
-      <div className="mx-auto max-w-6xl px-5 sm:px-6">
-        <div className="grid gap-8 sm:grid-cols-2">
-          <QuoteCard
-            image={hrLeadImg}
-            quote="We review hundreds of unstructured résumés without overlooking great talent. Diversity and equality are properly considered."
-            author="HR Lead, Bolivisión"
-          />
-          <QuoteCard
-            image={hiringManagerImg}
-            quote="Consulting clients expect both experience and technical skill. Talent Scout surfaces the candidates who have both — fast."
-            author="Hiring Manager, LA"
-          />
-        </div>
-      </div>
-    </section>
+<section id="testimonials" className="pt-16 sm:pt-24">
+  <div className="mx-auto max-w-6xl px-5 sm:px-6">
+    <IntroSection />
+  </div>
+</section>
+
+{/* Testimonials */}
+<section id="testimonials" className="pt-16 sm:pt-24">
+  <div className="mx-auto max-w-6xl px-5 sm:px-6">
+    <CostumersSection />
+  </div>
+</section>
 
 
       {/* CTA */}

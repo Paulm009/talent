@@ -5,6 +5,7 @@ import { carrucelcustommers, hiringManagers } from "../../assets/carrucelcustomm
 
 const Carousel = ({ data, sectionTitle }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   const carouselRef = useRef(null);
   const total = data.length;
 
@@ -22,16 +23,24 @@ const Carousel = ({ data, sectionTitle }) => {
 
   useEffect(() => {
     const handleResize = () => {
-      setVisibleCards(getVisibleCards());
+      const newVisibleCards = getVisibleCards();
+      setVisibleCards(newVisibleCards);
+      
+      // Detectar si es móvil
+      setIsMobile(window.innerWidth < 768);
+      
       // Ajustar currentIndex si es necesario después del resize
-      if (currentIndex + visibleCards > total) {
-        setCurrentIndex(Math.max(0, total - visibleCards));
+      if (currentIndex + newVisibleCards > total) {
+        setCurrentIndex(Math.max(0, total - newVisibleCards));
       }
     };
 
+    // Verificar inicialmente si es móvil
+    setIsMobile(window.innerWidth < 768);
+    
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, [currentIndex, visibleCards, total]);
+  }, [currentIndex, total]);
 
   const nextSlide = () => {
     if (currentIndex + visibleCards >= total) {
@@ -62,37 +71,42 @@ const Carousel = ({ data, sectionTitle }) => {
     return <p className="text-black-400 text-center">No hay datos para mostrar.</p>;
   }
 
+  
   return (
-    <div className="w-full bg-neutral-50 py-16 px-4">
+    <div className="w-full bg-white py-16 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Encabezado */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
             {sectionTitle}
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl/tight sm:text-1xl/tight md:text-2xl/tight  tracking-tight">
             We review hundreds of unstructured résumés without overlooking great talent. Diversity and equality are properly considered.
           </p>
         </div>
 
         {/* Contenedor del carrusel */}
         <div className="relative">
-          {/* Botones de navegación */}
-          <button 
-            onClick={prevSlide}
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 z-20 bg-white p-3 rounded-full hover:bg-gray-100 transition-all duration-300 -ml-4 md:-ml-6 shadow-lg border border-gray-200"
-            aria-label="Anterior"
-          >
-            <BiChevronLeft size={32} className="text-gray-700" />
-          </button>
-          
-          <button 
-            onClick={nextSlide}
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 z-20 bg-white p-3 rounded-full hover:bg-gray-100 transition-all duration-300 -mr-4 md:-mr-6 shadow-lg border border-gray-200"
-            aria-label="Siguiente"
-          >
-            <BiChevronRight size={32} className="text-blue-700" />
-          </button>
+          {/* Botones de navegación - Solo mostrar en desktop */}
+          {!isMobile && (
+            <>
+              <button 
+                onClick={prevSlide}
+                className="absolute left-0 top-1/2 transform -translate-y-1/2 z-20 bg-white p-3 rounded-full hover:bg-gray-100 transition-all duration-300 -ml-4 md:-ml-6 shadow-lg border border-gray-200"
+                aria-label="Anterior"
+              >
+                <BiChevronLeft size={32} className="text-gray-700" />
+              </button>
+              
+              <button 
+                onClick={nextSlide}
+                className="absolute right-0 top-1/2 transform -translate-y-1/2 z-20 bg-white p-3 rounded-full hover:bg-gray-100 transition-all duration-300 -mr-4 md:-mr-6 shadow-lg border border-gray-200"
+                aria-label="Siguiente"
+              >
+                <BiChevronRight size={32} className="text-gray-700" />
+              </button>
+            </>
+          )}
 
           {/* Carrusel */}
           <div 
@@ -132,15 +146,7 @@ const Carousel = ({ data, sectionTitle }) => {
           ))}
         </div>
 
-        {/* Texto inferior */}
-        <div className="text-center mt-16">
-          <p className="text-xl mb-8 max-w-2xl mx-auto text-gray-600">
-            Consulting clients expect both experience and technical skill. Talent Scout surfaces the candidates who have both—fast.
-          </p>
-          <button className="bg-purple-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-purple-700 transition-all duration-300 shadow-md">
-            Book a demo
-          </button>
-        </div>
+      
       </div>
     </div>
   );
