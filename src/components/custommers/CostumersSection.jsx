@@ -83,6 +83,7 @@ const Carousel = ({ data, sectionTitle }) => {
           <p className="text-xl/tight sm:text-1xl/tight md:text-2xl/tight  tracking-tight">
             We review hundreds of unstructured résumés without overlooking great talent. Diversity and equality are properly considered.
           </p>
+          
         </div>
 
         {/* Contenedor del carrusel */}

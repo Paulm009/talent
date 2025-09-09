@@ -82,6 +82,7 @@ export default function LandingBody() {
 <section id="testimonials" className="pt-16 sm:pt-24 py-0 px-0">
   <div className="mx-auto max-w-6xl px-5 sm:px-6">
     <IntroSection />
+    <br />
   </div>
 </section>
 
