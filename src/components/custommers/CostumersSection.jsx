@@ -73,7 +73,7 @@ const Carousel = ({ data, sectionTitle }) => {
 
   
   return (
-    <div className="w-full bg-white py-16 px-4">
+    <div className="w-full bg-white py-1 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Encabezado */}
         <div className="text-center mb-16">

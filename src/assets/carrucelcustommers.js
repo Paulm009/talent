@@ -22,7 +22,7 @@ export const carrucelcustommers = [
   },
   {
     logo: toyota,
-    extraImg: persona3,
+    extraImg: persona4,
     description:
       "Finding the right people is overwhelming at every level. Having a tool that anyone on the team can use anytime and with minimal training has empowered us to collaborate and confidently choose top talent together."
   }
@@ -40,5 +40,11 @@ export const hiringManagers = [
     extraImg: persona4,
     description:
       "Talent Scout's AI resume screening tool made it incredibly easy for us to upload job descriptions and resumes, providing clear assessment and matching scores. We were extremely impressed with the data-driven insights, which streamlined our hiring process. The outcome was fantastic, as the tool directly led us to make some of our best hires to date."
-  }
+  },
+{
+    logo: "https://letsvolunteerla.org/wp-content/uploads/sites/46/2025/01/UJvC3rvYN.jpeg",
+    extraImg: persona3,
+    description:
+      "Talent Scout saved my Sunday. As a hiring manager, I take the initiative to review all applicants myself, especially when hiring technical talent. Talent Scout is a simple, effective tool that streamlines the evaluation process and provides the insights I need to quickly identify and dive deeper into the top candidates."
+  },
 ];

@@ -15,6 +15,7 @@ const Card = ({ card }) => {
   return (
     <div
       style={{
+       
         position: "relative",
         backgroundColor: "white",
         borderRadius: "0.75rem",
@@ -26,7 +27,9 @@ const Card = ({ card }) => {
         boxShadow:
           "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
         transition: "all 0.3s ease",
-        marginTop: isMobile ? "1rem" : "3rem",
+        marginTop: isMobile ? "1rem" : "5rem",
+        
+        
       }}
     >
       {/* Foto de persona */}
@@ -36,7 +39,7 @@ const Card = ({ card }) => {
           <div
             style={{
               margin: "1rem auto 0 auto",
-              top: "-40px",
+              top: "-35px",
               width: "90px",
               height: "90px",
               borderRadius: "50%",
@@ -64,7 +67,7 @@ const Card = ({ card }) => {
           <div
             style={{
               position: "absolute",
-              top: "-65px",
+              top: "-70px",
               left: "70%",
               transform: "translateX(-50%)",
               width: "90px",
@@ -77,6 +80,7 @@ const Card = ({ card }) => {
               alignItems: "center",
               justifyContent: "center",
               overflow: "hidden",
+              
             }}
           >
             <img
@@ -100,14 +104,14 @@ const Card = ({ card }) => {
           alignItems: "center",
           justifyContent: "center",
           padding: "1rem",
-          backgroundColor: "#2f0d68",
+          backgroundColor: "#ffffffff",
         }}
       >
         <img
           src={card.logo}
           alt="Logo"
           style={{
-            maxHeight: "6rem",
+            maxHeight: "10rem",
             maxWidth: "100%",
             objectFit: "contain",
           }}
@@ -127,7 +131,7 @@ const Card = ({ card }) => {
         <div style={{ flex: 1, overflow: "hidden" }}>
           <p
             style={{
-              fontSize: isMobile ? "0.875rem" : "1.125rem",
+              fontSize: isMobile ? "0.875rem" : "1.200rem",
               color: "#374151",
               lineHeight: "1.25",
               display: "-webkit-box",

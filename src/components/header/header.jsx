@@ -7,7 +7,7 @@ function Header() {
 
   return (
     <header className="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/60 bg-white/80 border-b border-black/5">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-0">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <a href="/" className="flex items-center gap-3">
@@ -49,7 +49,7 @@ function Header() {
               offset={-70} 
               className="cursor-pointer hover:opacity-70 transition-opacity"
             >
-              Testimonials
+              Customers
             </ScrollLink>
 
             <ScrollLink 
